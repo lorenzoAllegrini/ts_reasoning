@@ -1,0 +1,24 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WHITELIST: publish ONLY the source in src/ + what is needed to run it.
+# Everything else (17 GB ChatTS ckpt, ESA/space-ai datasets, papers, vendored
+# repos, secrets, tests, legacy, data) stays local. This is a deny-by-default
+# .gitignore: ignore every top-level entry, then re-include the few we publish.
+# ─────────────────────────────────────────────────────────────────────────────
+/*
+
+# …re-include the code and the run essentials:
+!/src/
+!/pyproject.toml
+!/uv.lock
+!/.python-version
+!/README.md
+!/.gitignore
+
+# Never track secrets or caches/artefacts, even inside the re-included tree:
+.env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

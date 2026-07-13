@@ -1,0 +1,71 @@
+[project]
+name = "esa-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-core>=1.4.9",
+    "langchain-groq>=1.1.3",
+    "langgraph>=1.2.9",
+    "numpy>=1.24,<2.4",
+    "pandas>=2.2.0,<2.4.0",
+    "pydantic>=2.13.4",
+    "python-dotenv>=1.2.2",
+    "ruptures>=1.1.10",
+    "scipy>=1.18.0",
+    "statsmodels>=0.14.6",
+    "spaceai",
+    "transformers>=5.13.1",
+    "accelerate>=1.14.0",
+    "traceloop-sdk>=0.62.1",
+]
+
+[tool.uv.sources]
+spaceai = { path = "./space-ai", editable = true }
+
+[dependency-groups]
+dev = [
+    "mypy>=2.2.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.21",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+# Vendored checkouts and pre-existing scripts are not part of this codebase.
+extend-exclude = [
+    "ChatTS",
+    "space-ai",
+    "AXIS",
+    "OpenTSLM",
+    "TimeSeriesScientist",
+    "superpowers",
+    "papers",
+    "tslm_esperiment.py",
+    "main.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "BLE"]
+ignore = ["E501"]  # long prompt strings and comments are unavoidable
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+warn_redundant_casts = true
+no_implicit_optional = true
+strict_equality = true
+ignore_missing_imports = true  # langgraph/langchain/ruptures/groq/spaceai lack complete stubs
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+

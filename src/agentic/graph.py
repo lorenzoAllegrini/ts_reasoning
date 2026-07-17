@@ -19,13 +19,13 @@ from typing import Any
 from langgraph.graph import END, START, StateGraph
 
 from src import config
-from src.agents.analysis import AnalysisAgent
-from src.agents.orchestrator import Orchestrator
-from src.agents.perception import Perceptor
-from src.kg import KnowledgeGraph, StubKnowledgeGraph
-from src.llm import get_llms
-from src.models import AgentState, EvidenceEntry, ProbeRequest
-from src.nodes import preprocess, report
+from src.agentic.agents.analysis import AnalysisAgent
+from src.agentic.agents.orchestrator import Orchestrator
+from src.agentic.agents.perception import Perceptor
+from src.agentic.kg import KnowledgeGraph, StubKnowledgeGraph
+from src.agentic.llm import get_llms
+from src.agentic.models import AgentState, EvidenceEntry, ProbeRequest
+from src.agentic.nodes import preprocess, report
 
 logger = logging.getLogger(__name__)
 

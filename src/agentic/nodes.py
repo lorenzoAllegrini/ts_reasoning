@@ -15,9 +15,9 @@ import functools
 import logging
 from typing import Any
 
-from src import data
-from src.models import AgentState, find_hypothesis
-from src.tools import Segment, adaptive_pelt
+from src.agentic import data
+from src.agentic.models import AgentState, find_hypothesis
+from src.agentic.tools import Segment, adaptive_pelt
 
 logger = logging.getLogger(__name__)
 

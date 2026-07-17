@@ -20,7 +20,7 @@ from typing import Protocol, get_args, runtime_checkable
 import pandas as pd
 
 from src import config
-from src.models import HypothesisType
+from src.agentic.models import HypothesisType
 
 # Generic hypothesis vocabulary available WITHOUT a mission ontology (§0.5):
 # surface mechanisms, not named physical faults. Kept in sync with HypothesisType.

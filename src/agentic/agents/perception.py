@@ -15,8 +15,9 @@ from typing import Any
 
 import numpy as np
 
-from src import config, data
-from src.models import EvidenceEntry, ProbeRequest
+from src import config
+from src.agentic import data
+from src.agentic.models import EvidenceEntry, ProbeRequest
 
 logger = logging.getLogger(__name__)
 
@@ -77,11 +78,9 @@ class ChatTSPerceptor(Perceptor):
     def __init__(
         self,
         ckpt: str = config.CHATTS_CKPT,
-        max_points: int = config.CHATTS_MAX_POINTS,
         max_new_tokens: int = config.CHATTS_MAX_NEW_TOKENS,
     ) -> None:
         self._ckpt = ckpt
-        self._max_points = max_points
         self._max_new_tokens = max_new_tokens
         self._model: Any = None
         self._proc: Any = None
@@ -103,20 +102,78 @@ class ChatTSPerceptor(Perceptor):
         )
         logger.info("ChatTS: loaded.")
 
+    def _guard_hard_limit(self, seg: np.ndarray) -> np.ndarray:
+        """Series go to ChatTS at FULL RESOLUTION — no subsampling. The paper's 64–1024
+        is only the TRAINING-data range (§3.5.3) and the README's 1024 a recommendation;
+        the checkpoint's real architectural cap is ts.max_sequence_length = 8192, which
+        is the only thing enforced here (with a warning, since it should never trigger
+        on our windows)."""
+        if seg.size > config.CHATTS_HARD_MAX_POINTS:
+            logger.warning(
+                "ChatTS input of %d points exceeds the encoder's hard cap (%d) — subsampling to the cap",
+                seg.size, config.CHATTS_HARD_MAX_POINTS,
+            )
+            idx = np.linspace(0, seg.size - 1, config.CHATTS_HARD_MAX_POINTS).astype(int)
+            seg = seg[idx]
+        return np.asarray(seg, dtype=float)
+
     def _slice(self, data_path: str, channel: str, rng: tuple[int, int]) -> np.ndarray:
         series = data.get_channel(data_path, channel)
         seg = series[rng[0] : rng[1]] if rng != (0, 0) else series
-        if seg.size > self._max_points:  # uniform subsample to keep ChatTS's context small
-            idx = np.linspace(0, seg.size - 1, self._max_points).astype(int)
-            seg = seg[idx]
-        return np.asarray(seg, dtype=float)
+        return self._guard_hard_limit(seg)
+
+    def chat(
+        self,
+        system: str,
+        user: str,
+        series: list[np.ndarray],
+        max_new_tokens: int | None = None,
+    ) -> str:
+        """Low-level ChatTS call: one <ts><ts/> placeholder per series must appear in
+        `user`. Shared by probe() and by the labelling TimeSeriesDescriptor, so the
+        16 GB model is loaded once per process regardless of who asks."""
+        import torch  # noqa: PLC0415
+
+        self._ensure_loaded()
+        clipped = [self._guard_hard_limit(np.asarray(s, dtype=float)) for s in series]
+        prompt = (
+            f"<|im_start|>system\n{system}<|im_end|>\n"
+            f"<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n"
+        )
+        inp = self._proc(text=[prompt], timeseries=[s.tolist() for s in clipped], padding=True, return_tensors="pt")
+        inp = {k: v.to(self._device) for k, v in inp.items()}
+        with torch.no_grad():
+            out = self._model.generate(
+                **inp,
+                max_new_tokens=max_new_tokens or self._max_new_tokens,
+                do_sample=False,  # greedy → deterministic / reproducible (temperature 0 everywhere)
+                repetition_penalty=config.CHATTS_REPETITION_PENALTY,
+                no_repeat_ngram_size=config.CHATTS_NO_REPEAT_NGRAM,  # kill "102.102.102…" loops
+            )
+        text: str = self._tok.batch_decode(out[:, inp["input_ids"].shape[1] :], skip_special_tokens=True)[0].strip()
+        del inp, out  # free the activation/KV-cache tensors before the next call
+        self._free_device_memory()
+        return text
+
+    def _free_device_memory(self) -> None:
+        """Release the device cache after a generation so memory does not accumulate
+        across the three description stages / many points. Never breaks a run."""
+        import gc  # noqa: PLC0415
+
+        gc.collect()
+        try:
+            import torch  # noqa: PLC0415
+
+            if self._device == "mps":
+                torch.mps.empty_cache()
+            elif self._device == "cuda":
+                torch.cuda.empty_cache()
+        except Exception:  # noqa: BLE001 — memory cleanup is best-effort
+            pass
 
     def probe(self, request: ProbeRequest, step: int, data_path: str | None = None) -> EvidenceEntry:
         if data_path is None:
             return super().probe(request, step, data_path)
-        import torch  # noqa: PLC0415
-
-        self._ensure_loaded()
         channels = request.channels[:2] or []
         slices = [self._slice(data_path, ch, request.query_range) for ch in channels]
         placeholders = " ".join("<ts><ts/>" for _ in slices)
@@ -125,14 +182,6 @@ class ChatTSPerceptor(Perceptor):
             f"{request.question} Describe what you see (shape, periodicity/modulation present or absent, "
             "how level and variability evolve). Do NOT decide whether it is anomalous."
         )
-        prompt = (
-            f"<|im_start|>system\n{PERCEPTOR_SYSTEM_PROMPT}<|im_end|>\n"
-            f"<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n"
-        )
-        inp = self._proc(text=[prompt], timeseries=[s.tolist() for s in slices], padding=True, return_tensors="pt")
-        inp = {k: v.to(self._device) for k, v in inp.items()}
-        with torch.no_grad():
-            out = self._model.generate(**inp, max_new_tokens=self._max_new_tokens)
-        text = self._tok.batch_decode(out[:, inp["input_ids"].shape[1] :], skip_special_tokens=True)[0].strip()
+        text = self.chat(PERCEPTOR_SYSTEM_PROMPT, user, slices)
         logger.info("ChatTS probe [%s] %s: %s", request.mode, channels, text[:140])
         return _observation_entry(request, step, text)

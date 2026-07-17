@@ -1,8 +1,8 @@
 """Entrypoint — run the interpretation loop and print the evidence log (INV-3).
 
-    uv run python -m src.main            # synthetic worked-example signal, real LLM
-    uv run python -m src.main --stub     # synthetic signal, no LLM (deterministic path)
-    uv run python -m src.main --smoke    # ping Groq and verify the model string (§12 Step 0)
+    uv run python -m src.agentic.main            # synthetic worked-example signal, real LLM
+    uv run python -m src.agentic.main --stub     # synthetic signal, no LLM (deterministic path)
+    uv run python -m src.agentic.main --smoke    # ping Groq and verify the model string (§12 Step 0)
 
 The evidence log IS the deliverable: every hypothesis, query, verdict and belief
 update is printed as the audit trail.
@@ -19,9 +19,9 @@ from pathlib import Path
 
 from data.demo_ts_generator import save
 from src import config
-from src.graph import TelemetryInterpretationGraph, make_initial_state
-from src.llm import get_llm
-from src.models import AgentState
+from src.agentic.graph import TelemetryInterpretationGraph, make_initial_state
+from src.agentic.llm import get_llm
+from src.agentic.models import AgentState
 from src.observability import init_tracing
 
 

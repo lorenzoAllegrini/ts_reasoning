@@ -28,7 +28,7 @@ from typing import get_args
 
 import pandas as pd
 
-from src.models import HypothesisType
+from src.agentic.models import HypothesisType
 
 MISSION1_DIR = "space-ai/datasets/ESA-Mission1/ESA-Mission1"
 GENERIC_VOCABULARY: list[str] = list(get_args(HypothesisType))

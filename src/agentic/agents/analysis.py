@@ -14,10 +14,11 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from src import config, data
-from src.agents.base import BaseLLMAgent
-from src.nodes import channel_segments
-from src.tools import (
+from src import config
+from src.agentic import data
+from src.agentic.agents.base import BaseLLMAgent
+from src.agentic.nodes import channel_segments
+from src.agentic.tools import (
     compare_intervals_statistics,
     compute_cross_channel_coupling,
     compute_interval_anomaly_score,

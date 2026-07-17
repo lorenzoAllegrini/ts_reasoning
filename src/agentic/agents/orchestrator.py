@@ -17,9 +17,9 @@ from collections.abc import Sequence
 from langchain_core.language_models import BaseChatModel
 from pydantic import BaseModel
 
-from src.agents.base import BaseLLMAgent
-from src.kg import KnowledgeGraph
-from src.models import (
+from src.agentic.agents.base import BaseLLMAgent
+from src.agentic.kg import KnowledgeGraph
+from src.agentic.models import (
     Hypothesis,
     HypothesisType,
     OrchestratorAction,

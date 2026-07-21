@@ -7,6 +7,17 @@ why the backbone was switched to a vision LM).
 **Point:** channel_74 @ 2000-10-16, subsystem_3, 6 most-active channels (same point as
 `chatts_multivariate_subsystem3.csv` and `vlm_multivariate_subsystem3.csv`).
 
+## What the model was actually looking at
+
+The real telemetry window. `channel_74` (the flagged channel) is a **flat baseline near 1.0
+with one sharp square-wave dropout to 0** — the anomaly. This is the exact signal whose raw
+values ChatTS turned into the retail/sales/API text below; the VLM backbone, given the same
+plot, described the dropout correctly ("sharp narrow dropout … ~1.0→0.0, square-wave-like").
+
+![channel_74 — coarse ±512](plots/channel_74_coarse.png)
+
+Zooms: [medium ±128](plots/channel_74_medium.png) · [fine ±24](plots/channel_74_fine.png).
+
 **Config that produced it:** ChatTS (Qwen3-TS, raw values), clean prompts, greedy
 (`do_sample=False`), `repetition_penalty=1.3`, `no_repeat_ngram_size=3`,
 `max_new_tokens=768`.

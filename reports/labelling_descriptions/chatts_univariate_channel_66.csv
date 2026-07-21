@@ -1,0 +1,4 @@
+channel,start,end,center,description,label
+channel_66,7255476,7255524,7255500,"[coarse ±512] The overall level is around 0.99, with a steady trend. No periodic fluctuations are observed. The variability starts with very small noise (standard deviation around 0.00, and distinctive local features. No local distinctive local features are found.
+[medium ±128] The overall level and variability details not visible in the wider view. The overall level and trend description, just confirm or correct as needed.
+[fine ±24] An upward spike with an amplitude of 0.79 occurs between point 12 and point 14. The spike begins with a rapid rise from around 0.38 to around 1.14, then quickly falls back to around 0.38, forming a distinct upward spike.",1

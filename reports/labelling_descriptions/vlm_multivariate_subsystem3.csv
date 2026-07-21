@@ -1,0 +1,320 @@
+channel,channels,start,end,center,description,label
+channel_74,channel_53+channel_54+channel_55+channel_56+channel_73+channel_74,834696,834744,834720,"[coarse ±512] [channel_53, channel_54, channel_55, channel_56] Here is a description of the telemetry channels based on the provided plots.
+
+### Channel Descriptions
+
+**channel_53**
+*   **Level and Trend:** The signal maintains a high baseline level, hovering consistently near the top of the y-axis (approximately 0.9 to 1.0). There is no long-term upward or downward trend; the mean level is stable across the entire 1024-point stretch.
+*   **Variability and Modulation:** The channel is highly variable, characterized by sharp, transient downward spikes. It is not periodic in a simple sine-wave sense, but rather exhibits a ""bursty"" or stochastic modulation where the signal drops and recovers rapidly.
+*   **Local Features:** The dominant feature is a series of deep, narrow downward spikes (dropouts) that plunge from the ~0.9 baseline down to 0.0 or near-zero values. These spikes occur irregularly throughout the timeline, with a notable cluster of activity between points 800 and 1000.
+
+**channel_54**
+*   **Level and Trend:** This channel operates at a lower baseline than channel_53, centering around 0.7 to 0.8. Like the previous channel, it shows no significant long-term drift.
+*   **Variability and Modulation:** The signal is highly variable with a ""spiky"" texture. The modulation appears somewhat denser than in channel_53, with frequent, rapid fluctuations.
+*   **Local Features:** The signal is defined by sharp downward spikes that drop from the ~0.75 baseline to roughly 0.4. These spikes are distributed across the entire timeline, with a particularly dense cluster of deep spikes visible between points 800 and 900.
+
+**channel_55**
+*   **Level and Trend:** This channel has the lowest baseline of the group, fluctuating around a mean of 0.5. The level is stable over time.
+*   **Variability and Modulation:** The channel is highly variable, exhibiting a ""comb-like"" appearance due to frequent, sharp downward excursions.
+*   **Local Features:** The primary feature is a series of downward spikes dropping from the ~0.5 baseline to 0.0. These spikes are frequent and irregular. There is a visible grouping of deeper spikes around the 150–200 point mark and another cluster near the end of the timeline (900–1000).
+
+**channel_56**
+*   **Level and Trend:** This channel sits at a high baseline, similar to channel_53, hovering around 0.85 to 0.9. The trend is flat.
+*   **Variability and Modulation:** The signal is highly variable, dominated by sharp, transient downward movements.
+*   **Local Features:** The channel exhibits deep downward spikes that plunge from the ~0.9 baseline to roughly 0.4. These spikes are scattered throughout the timeline, with a notable concentration of activity between points 750 and 850.
+
+### Similarities and Distinctions
+
+**Channels that behave alike:**
+*   **Morphology:** All four channels share an identical morphological structure. They are all ""high-state"" signals characterized by sharp, transient downward spikes (drop
+[channel_73, channel_74] channel_73:
+- Level and trend: Centered near 0.935–0.945 with no clear long-term drift; the mean appears roughly constant across the 1024-point span.
+- Periodicity/modulation: Strong, regular high-frequency oscillation throughout (dense vertical “teeth”), suggesting a periodic or quasi-periodic carrier. The envelope shows mild, slow undulations but no obvious amplitude modulation pattern.
+- Variability: High short-term variability due to the oscillation; the peak-to-peak range is approximately 0.01–0.02.
+- Local features: A few isolated spikes that exceed the typical envelope (e.g., around sample ~750 and ~900), but no steps, ramps, plateaus, or dropouts.
+
+channel_74:
+- Level and trend: Essentially flat at ~1.0 for most of the record, except for a brief excursion.
+- Periodicity/modulation: No visible periodicity or modulation; the signal is steady-state.
+- Variability: Very low overall; near-zero variance outside the excursion.
+- Local features: A sharp, narrow dropout centered near sample ~600, where the value drops to ~0.0 and returns to ~1.0 within a few samples (a brief square-wave-like dip).
+
+Similarities and differences:
+- Behave alike: Neither channel shows a long-term trend or sustained change in level; both are largely stationary over the 1024-point window.
+- Stand out: channel_73 is highly oscillatory with continuous high-frequency variation, while channel_74 is nearly constant except for a single, localized dropout near sample 600. Their temporal structures are markedly different.
+[medium ±128] [channel_53, channel_54, channel_55, channel_56] Here is a description of the visible telemetry channels based on the provided plots.
+
+### Channel 53
+*   **Level and Trend:** The signal maintains a high baseline level, hovering around 0.85 to 0.9. There is no long-term drift; the level is stable.
+*   **Periodicity and Modulation:** The signal is not strictly periodic but exhibits a modulated structure. It consists of a high-state baseline punctuated by sharp, downward excursions.
+*   **Variability:** The signal is highly variable due to the frequent, deep drops.
+*   **Local Features:**
+    *   **Sharp Spikes (Downward):** The dominant feature is a series of sharp, V-shaped drops that plunge from the ~0.85 baseline down to 0.0. These occur frequently, particularly between indices 40–60 and 150–180.
+    *   **Plateaus:** Between the drops, the signal forms flat plateaus at the high level.
+    *   **Oscillations:** In the region between indices 150 and 180, the signal exhibits a ""burst"" of rapid, high-frequency oscillations before settling back into the plateau-and-drop pattern.
+
+### Channel 54
+*   **Level and Trend:** The signal sits at a high baseline of approximately 0.8. It is stable with no trend.
+*   **Periodicity and Modulation:** The signal is highly periodic. It resembles a square wave or a pulse train.
+*   **Variability:** The variability is consistent and rhythmic.
+*   **Local Features:**
+    *   **Square-Wave Drops:** The signal consists of a repeating pattern of flat tops (at 0.8) and sharp, vertical drops to a lower level (around 0.4–0.5).
+    *   **Sharp Transitions:** The transitions between the high and low states are nearly vertical, indicating instantaneous switching.
+    *   **Regularity:** The spacing between the drops is relatively uniform, creating a ""comb-like"" appearance.
+
+### Channel 55
+*   **Level and Trend:** The signal has a high baseline around 0.55. It is stable.
+*   **Periodicity and Modulation:** Like Channel 54, this channel is periodic and modulated, resembling a pulse train.
+*   **Variability:** The variability is rhythmic and consistent.
+*   **Local Features:**
+    *   **Square-Wave Drops:** The signal features a repeating pattern of flat tops (at 0.55) and sharp, vertical drops to a lower level (around 0.0–0.1).
+    *   **Sharp Transitions:** The transitions are vertical, similar to Channel 54.
+    *   **Regularity:** The pattern is regular, with consistent spacing between the drops.
+
+### Channel 56
+*   **Level and Trend:** The signal has a high baseline around 0.9. It is stable.
+*   **Periodicity and Modulation:** The signal is periodic and modulated, similar to Channels 54 and 55.
+*   **Variability:** The variability is rhythmic and consistent.
+*   **Local Features:**
+    *   **
+[channel_73, channel_74] Here is a description of the visible telemetry behavior for each channel, based on the provided plots.
+
+### Channel 73
+*   **Level and Trend:** The signal maintains a high level, oscillating within a narrow band roughly between **0.930 and 0.950**. There is no significant long-term drift or trend; the mean value remains stable across the entire 256-point stretch.
+*   **Periodicity and Modulation:** The channel exhibits strong, continuous periodicity. It appears as a high-frequency carrier wave (roughly 10–15 cycles per 50 points) that is amplitude-modulated. The envelope of the signal varies slowly, creating ""beats"" or clusters of higher and lower amplitudes.
+*   **Variability:** The signal is highly variable on a point-to-point basis due to the rapid oscillations. The amplitude modulation creates distinct regions of higher energy (peaks reaching ~0.950) and lower energy (troughs dipping to ~0.930).
+*   **Local Features:**
+    *   **Amplitude Clusters:** There are distinct groups of high-amplitude spikes, notably around points **20–30**, **50–60**, and **90–100**.
+    *   **Dips:** There are corresponding regions where the oscillation amplitude shrinks, such as around point **150** and **230**.
+    *   **Sharp Transients:** Within the oscillatory pattern, there are occasional single-point spikes that exceed the general envelope, for example, near point **15** and **95**.
+
+### Channel 74
+*   **Level and Trend:** The signal is predominantly static at a high level of approximately **0.98**. It is extremely stable with very low variability for the majority of the timeline.
+*   **Periodicity and Modulation:** There is no visible periodicity or modulation in the main signal. It appears as a flat DC line with negligible noise.
+*   **Variability:** The variability is near zero for ~85% of the duration. The signal is essentially constant.
+*   **Local Features:**
+    *   **Step Down (Dropout):** At approximately point **200**, the signal drops vertically and instantaneously from ~0.98 to **0.0**.
+    *   **Plateau:** The signal remains flat at 0.0 for a short duration (roughly 10–15 points, from point 200 to 215).
+    *   **Step Up (Recovery):** At approximately point **215**, the signal rises vertically and instantaneously back to the original level of ~0.98.
+    *   **Post-Event Stability:** After the recovery at point 215, the signal returns to its previous stable state with no visible ringing or overshoot.
+
+### Comparison
+*   **Similarities:** Both channels are stable in their baseline states (Channel 73 in its oscillatory envelope, Channel 74 in its DC level) for the majority of the timeline. Neither shows a long-term drift.
+*   **Differences:** The channels behave fundamentally differently. **Channel 73** is a continuous, high-frequency analog-like signal with
+[fine ±24] [channel_53, channel_54, channel_55, channel_56] Here is the description of the telemetry channels based on the provided plots.
+
+### Channel Descriptions
+
+**channel_53**
+*   **Level and Trend:** The signal oscillates around a mean level of approximately 0.85. It is relatively stable with no long-term drift.
+*   **Variability:** The signal exhibits low-amplitude, quasi-periodic fluctuations (sawtooth-like) throughout the excerpt.
+*   **Local Feature:** There is a distinct, sharp **spike** (negative excursion) occurring at index **32**. The signal drops vertically from ~0.9 to ~0.1 and returns immediately to the baseline.
+
+**channel_54**
+*   **Level and Trend:** The signal maintains a high plateau at approximately 0.8.
+*   **Variability:** The signal is characterized by frequent, sharp downward spikes (V-shapes) that interrupt the plateau.
+*   **Local Feature:** A prominent **spike** occurs at index **16**, dropping from 0.8 to ~0.4. Another significant spike occurs at index **28**, dropping to ~0.4.
+
+**channel_55**
+*   **Level and Trend:** The signal begins at ~0.28 and ramps up linearly to a plateau at ~0.56 by index 3. It remains at this level for the majority of the excerpt.
+*   **Variability:** The signal is static (flat) for most of the duration, interrupted only by sharp downward spikes.
+*   **Local Feature:** A sharp **spike** occurs at index **22**, dropping from 0.56 to ~0.3. A second, deeper **spike** occurs at index **24**, dropping to ~0.28.
+
+**channel_56**
+*   **Level and Trend:** The signal oscillates around a mean level of approximately 0.85.
+*   **Variability:** The signal shows a regular, sawtooth-like modulation pattern.
+*   **Local Feature:** A sharp **spike** occurs at index **40**, dropping from ~0.85 to ~0.4.
+
+### Correlations and Distinctions
+
+**Channels that behave alike:**
+*   **channel_53 and channel_56:** These two channels share the same baseline level (~0.85) and a similar ""sawtooth"" modulation pattern. They both exhibit a single, sharp negative spike, though the timing differs (index 32 for ch_53, index 40 for ch_56).
+*   **channel_54 and channel_55:** These channels share a ""high plateau with sharp downward spikes"" morphology. While their baseline levels differ (0.8 vs 0.56), the shape of their features (V-shaped drops) is similar.
+
+**Channels that stand out:**
+*   **channel_55:** This channel is unique due to its initial **ramp-up** phase at the beginning of the excerpt (indices 0–3), which is not present in the other channels. It also has the lowest baseline level.
+*   **channel_53:** This channel stands out for the depth of its spike at index 32, which drops to ~0
+[channel_73, channel_74] Here is the description of the telemetry excerpt for channels 73 and 74.
+
+### Channel 73
+*   **Level and Trend:** The signal oscillates around a mean level of approximately **0.9400**. There is no significant long-term trend; the signal remains centered on this value throughout the 48-point excerpt.
+*   **Periodicity and Variability:** The channel exhibits a strong, quasi-periodic oscillation with a period of roughly 4 to 5 points. The amplitude is relatively consistent, swinging between a floor of ~0.9325 and a ceiling of ~0.9450.
+*   **Local Features:**
+    *   **Spike (Peak):** A distinct, sharp peak occurs at **point 10**, reaching the highest value in the excerpt (~0.9460).
+    *   **Spike (Peak):** A second, slightly lower sharp peak occurs at **point 38** (~0.9460).
+    *   **Asymmetry:** The waveform is generally asymmetric; the rise to the peaks is typically steeper and faster than the descent to the troughs.
+
+### Channel 74
+*   **Level and Trend:** The signal oscillates around a mean level of approximately **0.9875**. Like channel 73, it shows no significant drift or trend.
+*   **Periodicity and Variability:** The channel displays a periodic oscillation that is visually synchronized with channel 73. The amplitude is comparable to channel 73, ranging from a floor of ~0.9780 to a ceiling of ~0.9930.
+*   **Local Features:**
+    *   **Spike (Peak):** A sharp peak occurs at **point 3**, reaching ~0.9930.
+    *   **Spike (Peak):** A second sharp peak occurs at **point 30**, reaching ~0.9930.
+    *   **Spike (Peak):** A third sharp peak occurs at **point 38**, reaching ~0.9930.
+    *   **Asymmetry:** Similar to channel 73, the signal rises sharply to peaks and descends more gradually.
+
+### Comparison and Correlation
+*   **Behavioral Similarity:** Both channels behave alike in terms of frequency and waveform shape. They are highly correlated, exhibiting the same ""sawtooth-like"" oscillation pattern.
+*   **Synchronization:** The channels change at the same time. The peaks and troughs in channel 74 align perfectly with the peaks and troughs in channel 73.
+*   **Distinctive Feature:** While the shapes are identical, the channels stand out due to their **DC offset**. Channel 74 is consistently higher than channel 73 by a fixed margin of approximately **0.0475**.",1
+channel_76,channel_53+channel_54+channel_55+channel_56+channel_73+channel_76,919296,919344,919320,"[coarse ±512] [channel_53, channel_54, channel_55, channel_56] Here is a description of the telemetry channels based on the provided plots.
+
+### Channel Descriptions
+
+**channel_53**
+*   **Level and Trend:** The signal maintains a high-level plateau, oscillating primarily between 0.8 and 1.0. There is no long-term drift; the baseline remains stable across the 1024 points.
+*   **Variability:** The signal is highly variable, characterized by frequent, sharp downward spikes (dropouts) that plunge toward 0.0.
+*   **Local Features:** The waveform is dominated by these vertical dropouts. There is a distinct cluster of high-frequency dropouts between points 150 and 250. A particularly deep, isolated spike occurs near point 600.
+
+**channel_54**
+*   **Level and Trend:** This channel operates at a lower baseline than channel_53, hovering around 0.7 to 0.8.
+*   **Variability:** It exhibits the same high-frequency, spiky variability as channel_53, with sharp downward excursions reaching down to 0.4.
+*   **Local Features:** The density of the spikes appears slightly higher in the first half (0–500) compared to the second half. The dropouts are generally shallower than those in channel_53, rarely reaching the bottom of the plot range.
+
+**channel_55**
+*   **Level and Trend:** The signal sits at a lower level, with a baseline around 0.5 to 0.6.
+*   **Variability:** Like the others, it is highly variable with sharp downward spikes reaching near 0.0.
+*   **Local Features:** There is a distinct, isolated upward spike (positive excursion) visible near point 800, which stands out against the background of downward spikes. The rest of the channel follows the standard spiky pattern.
+
+**channel_56**
+*   **Level and Trend:** This channel has a baseline similar to channel_54, oscillating around 0.8 to 0.9.
+*   **Variability:** It displays the characteristic sharp downward spikes, reaching depths of 0.4 to 0.5.
+*   **Local Features:** The pattern is consistent with the other channels, showing a dense forest of downward spikes. There is a notable deep spike near point 1000.
+
+### Similarities and Distinctions
+
+**Channels that behave alike:**
+*   **Morphology:** All four channels (53, 54, 55, 56) share an identical waveform morphology. They are all characterized by a ""comb-like"" structure consisting of a high-level baseline punctuated by frequent, sharp, vertical downward spikes.
+*   **Synchronization:** The timing of the spikes appears roughly synchronized across all channels. For example, the cluster of activity between points 150 and 250 is visible in all four panels, as is the activity around point 600.
+
+**Channels that stand out:**
+*   **channel_53:** Stands out due to its higher amplitude range (0.0–1.0) and the depth of its spikes, which reach the absolute bottom of the scale more frequently than the others.
+*   **
+[channel_73, channel_76] **channel_73:**
+- **Level and Trend:** The channel fluctuates around a mean level of approximately 0.94, with no clear long-term trend.
+- **Periodicity/Modulation:** The signal appears to be non-periodic and somewhat random, with no clear modulation pattern.
+- **Variability:** The signal is highly variable, with frequent and rapid changes in amplitude.
+- **Local Features:** There are no distinct local features such as steps, spikes, ramps, plateaus, dropouts, or oscillations. The signal remains consistently noisy throughout the entire stretch.
+
+**channel_76:**
+- **Level and Trend:** The channel maintains a constant level of 1.0 for most of the time, except for a brief period.
+- **Periodicity/Modulation:** The signal is not periodic or modulated; it is mostly flat.
+- **Variability:** The signal is very stable with minimal variability, except for a specific event.
+- **Local Features:** There is a clear dropout feature around the 600th point, where the signal drops sharply to 0.0 and then returns to 1.0 shortly after.
+
+**Comparison:**
+- **Similar Behavior:** Both channels show a relatively stable mean level over the majority of the time, but channel_73 is much more variable and noisy compared to channel_76.
+- **Distinct Behavior:** Channel_76 stands out due to its stability and the clear dropout feature around the 600th point, which is not present in channel_73. Channel_73, on the other hand, is characterized by its high variability and lack of distinct local features.
+[medium ±128] [channel_53, channel_54, channel_55, channel_56] Here is a description of the visible telemetry channels based on the provided plots.
+
+### Channel 53
+*   **Level and Trend:** The signal oscillates primarily between a high state of ~0.9 and a low state of ~0.6. There is no long-term drift, but the baseline level shifts slightly between the first half (0–128) and second half (128–256) of the data.
+*   **Periodicity/Modulation:** The signal is highly irregular and non-periodic. It appears to be a digital or quantized signal that has been corrupted by noise or glitches.
+*   **Variability:** High variability. The signal is jagged, with frequent small fluctuations superimposed on the main levels.
+*   **Local Features:**
+    *   **Deep Spikes:** There are distinct, sharp downward spikes that drop the signal to 0.0. These occur roughly at indices 20, 40, 110, 130, and 160.
+    *   **Ramps/Steps:** The transitions between the high and low states are often not vertical but show small ramps or ""staircase"" artifacts (e.g., around index 100).
+    *   **Oscillation:** In the second half (indices 128–256), there is a cluster of rapid, high-frequency oscillations around index 220–230.
+
+### Channel 54
+*   **Level and Trend:** The signal maintains a stable high plateau at ~0.8. It does not exhibit the lower ""0.6"" state seen in Channel 53.
+*   **Periodicity/Modulation:** The signal is aperiodic but exhibits a repetitive ""glitch"" pattern.
+*   **Variability:** Moderate variability. The signal is mostly flat (constant) but is punctuated by sharp, transient events.
+*   **Local Features:**
+    *   **V-Shaped Dips:** The dominant feature is a series of sharp, V-shaped downward spikes. These are narrower than the spikes in Channel 53.
+    *   **Depth:** The spikes vary in depth; some reach ~0.4, while others (e.g., at index 150) reach 0.0.
+    *   **Clustering:** There are clusters of double or triple spikes (e.g., around index 20 and 240).
+
+### Channel 55
+*   **Level and Trend:** Similar to Channel 54, this channel has a stable high plateau at ~0.55.
+*   **Periodicity/Modulation:** Aperiodic.
+*   **Variability:** Moderate variability, characterized by sharp downward excursions from the baseline.
+*   **Local Features:**
+    *   **Spike Shape:** The downward spikes are sharp and V-shaped, very similar in morphology to Channel 54.
+    *   **Depth:** The spikes are generally deep, often reaching 0.0 (e.g., at index 10, 30, 110).
+    *   **Timing:** The timing of the spikes appears somewhat correlated with Channel 54 (e.g., spikes near index 10,
+[channel_73, channel_76] Here is a description of the visible telemetry behavior for each channel, based on the provided plots.
+
+### Channel 73
+*   **Level and Trend:** The signal oscillates around a mean level of approximately **0.940**. There is no significant long-term trend; the signal remains centered on this value throughout the 256-point stretch.
+*   **Periodicity and Modulation:** The channel exhibits a strong, regular periodicity (a high-frequency carrier wave). The amplitude of this oscillation is modulated, creating a ""beating"" or envelope effect where the peaks and troughs vary in intensity.
+*   **Variability:** The signal is highly variable on a point-to-point basis, with rapid fluctuations between roughly **0.933** and **0.950**.
+*   **Local Features:**
+    *   **Spike:** There is a distinct, sharp positive spike near the beginning of the record (around index **5**), reaching the maximum amplitude of the dataset (~0.951).
+    *   **Amplitude Dip:** A localized reduction in oscillation amplitude (a ""quiet"" zone) is visible around index **150–160**, where the peaks are noticeably lower than the surrounding data.
+
+### Channel 76
+*   **Level and Trend:** The signal is predominantly static, holding a steady high level of **1.0** (or extremely close to it) for the majority of the duration.
+*   **Periodicity and Modulation:** There is no visible periodicity or modulation. The line is effectively flat, indicating a constant state.
+*   **Variability:** The signal is extremely stable with negligible variability for the first ~85% of the record.
+*   **Local Features:**
+    *   **Step Down:** At approximately index **225**, the signal drops vertically and instantaneously from ~1.0 to **0.0**.
+    *   **Plateau:** The signal holds at this 0.0 level for a short duration (roughly 10–15 points).
+    *   **Step Up:** At approximately index **240**, the signal rises vertically and instantaneously back to the original level of ~1.0.
+
+### Comparison
+*   **Behavioral Similarity:** The two channels behave **dissimilarly**. Channel 73 is a continuous, analog-style oscillating signal, whereas Channel 76 is a digital-style step function (binary-like behavior).
+*   **Outliers:** Channel 76 stands out due to its extreme stability followed by a sharp, discontinuous transition (the dropout), which contrasts with the continuous, noisy texture of Channel 73.
+[fine ±24] [channel_53, channel_54, channel_55, channel_56] Based on the provided plots, here is the description of the telemetry channels.
+
+### Channel Descriptions
+
+**channel_53**
+*   **Level and Trend:** The signal maintains a high baseline level (approximately 0.9) for the majority of the excerpt.
+*   **Variability:** It is generally stable but exhibits a series of downward ""V"" shaped notches.
+*   **Local Features:**
+    *   **Periodic Notches:** Between index 10 and 20, there is a cluster of three sharp, symmetric dips dropping to roughly 0.6.
+    *   **Major Spike:** A distinct, deep, single-point spike occurs at index 32, dropping vertically to 0.0 before immediately recovering to the baseline.
+    *   **Secondary Notches:** Following the spike, there are two smaller, shallower dips around indices 40 and 43.
+
+**channel_54**
+*   **Level and Trend:** The signal is extremely stable, holding a constant high level (approximately 0.8) with very little variation.
+*   **Variability:** Low variability; the signal is essentially a flat line interrupted by sharp, transient events.
+*   **Local Features:**
+    *   **Initial Spike:** A sharp, deep spike occurs at the very beginning (index 0), dropping to 0.4.
+    *   **Periodic Notches:** There is a sequence of downward dips occurring at regular intervals (indices 12, 15, 25, 28, 35, 45). These dips are symmetric and drop to levels between 0.6 and 0.75.
+
+**channel_55**
+*   **Level and Trend:** The signal sits at a high level (approximately 0.55) for most of the duration.
+*   **Variability:** Similar to channel_54, it is mostly flat with sharp, transient downward deviations.
+*   **Local Features:**
+    *   **Initial Spike:** A sharp spike occurs at index 0, dropping to 0.0.
+    *   **Periodic Notches:** A series of downward dips occurs at indices 2, 5, 9, 21, 24, and 34. These dips are sharp and symmetric, dropping to levels between 0.0 and 0.45.
+
+**channel_56**
+*   **Level and Trend:** The signal fluctuates around a lower baseline (approximately 0.8) compared to the other channels.
+*   **Variability:** This channel is the most variable, showing a ""sawtooth"" or jagged appearance throughout the entire excerpt.
+*   **Local Features:**
+    *   **Continuous Modulation:** The signal is constantly oscillating with small amplitude.
+    *   **Major Spike:** A deep, sharp spike occurs at index 32, dropping to 0.3.
+    *   **Secondary Dips:** There are several other significant dips, notably around indices 25 and 35.
+
+### Correlations and Distinctions
+
+**Channels Behaving Alike:**
+*   **channel_54 and channel_55:** These two channels behave very similarly. Both maintain a high
+[channel_73, channel_76] Here is the description of the telemetry excerpt for channels 73 and 76.
+
+### Channel 73
+*   **Level and Trend:** The signal oscillates around a mean level of approximately **0.940**. There is no significant long-term trend; the signal remains centered on this value throughout the excerpt.
+*   **Variability and Modulation:** The channel is highly variable and exhibits a quasi-periodic, sawtooth-like modulation. The waveform consists of sharp, linear ramps followed by rapid drops.
+*   **Local Features:**
+    *   **Sawtooth Pattern:** The signal is dominated by a repeating pattern of rising ramps (lasting roughly 3–5 points) followed by steep, near-vertical drops.
+    *   **Amplitude:** The peaks generally reach **0.945**, while the troughs dip to **0.933–0.935**.
+    *   **Specific Feature (End of Excerpt):** At the very end of the trace (index ~47), there is a distinct, sharp spike that rises significantly higher than the previous peaks, reaching the top of the plot frame at **0.950**.
+
+### Channel 76
+*   **Level and Trend:** The signal oscillates around a mean level of approximately **0.970**. Like channel 73, it shows no significant drift or trend.
+*   **Variability and Modulation:** This channel is also highly variable and modulated, displaying a jagged, sawtooth-like structure similar to channel 73.
+*   **Local Features:**
+    *   **Sawtooth Pattern:** The waveform features sharp rising ramps and steep drops.
+    *   **Amplitude:** The peaks generally reach **0.974–0.975**, while the troughs dip to **0.967–0.968**.
+    *   **Specific Feature (Index ~22):** There is a distinct ""flat-bottom"" feature where the signal hits the minimum level (~0.967) and stays flat for two points before rising again.
+
+### Comparison and Correlation
+*   **Behavioral Similarity:** Both channels behave alike in terms of **morphology**. They both exhibit a ""sawtooth"" shape characterized by linear ramps up and sharp drops down.
+*   **Synchronization:** The channels change at the same time. The peaks and troughs in channel 73 align almost perfectly with the peaks and troughs in channel 76.
+*   **Distinctive Differences:**
+    *   **Phase:** The channels appear to be in phase (peaks align with peaks).
+    *   **Amplitude:** Channel 76 has a slightly larger peak-to-peak amplitude (approx. 0.008) compared to channel 73 (approx. 0.006).
+    *   **Outlier:** Channel 73 stands out at the very end of the excerpt with a sharp spike to 0.950, whereas channel 76 does not show a corresponding spike at that specific moment.",1

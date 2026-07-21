@@ -3,8 +3,10 @@
 **Hardware:** Apple M1 Max (arm64), 64 GB RAM, **no CUDA GPU** (`nvidia-smi` absent) →
 all inference on **CPU** (MPS crashed or is unsupported; details in per-model reports).
 **Test series:** 240 pts (600 for ITFormer), sinusoid + sharp sustained step at the
-midpoint. A correct description must mention **both** the periodic oscillation **and**
-the step.
+midpoint — `x = sin(2πt/24) + 3·[t>120]`. A correct description must mention **both** the
+periodic oscillation **and** the step.
+
+![smoke-test probe](labelling_descriptions/plots/smoke_test_probe.png)
 
 | model | installed | inference ok | inference time (CPU) | output correctly describes the series (periodicity + step)? |
 |---|---|---|---|---|

@@ -48,13 +48,12 @@ def _epoch_seconds(timestamps: np.ndarray) -> np.ndarray:
     return timestamps.astype("datetime64[s]").astype(np.float64)
 
 
-def collect_candidates(root: str, channels: list[str]) -> tuple[list[OOLCandidate], dict[str, int]]:
+def collect_candidates(root: str, channels: list[str]) -> list[OOLCandidate]:
     """Load each training channel via spaceai's preprocessing and scan it for OOL windows."""
     from spaceai.data.esa import ESA, ESAMissions  # noqa: PLC0415 — torch-heavy, script-only
 
     mission = ESAMissions.MISSION_1.value
     all_candidates: list[OOLCandidate] = []
-    sizes: dict[str, int] = {}
     for i, channel in enumerate(channels):
         t0 = time.time()
         esa = ESA(root=root, mission=mission, channel_id=channel, train=True, download=False)
@@ -63,12 +62,11 @@ def collect_candidates(root: str, channels: list[str]) -> tuple[list[OOLCandidat
             x, channel, _epoch_seconds(np.asarray(esa.timestamps)), esa.anomalies
         )
         all_candidates.extend(cands)
-        sizes[channel] = int(x.size)
         logger.info(
             "[%d/%d] %s: %d samples, %d anomaly intervals, %d OOL candidates (%.1fs)",
             i + 1, len(channels), channel, x.size, len(esa.anomalies), len(cands), time.time() - t0,
         )
-    return all_candidates, sizes
+    return all_candidates
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -85,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     mission = ESAMissions.MISSION_1.value
     channels = args.channels or (mission.parameters if args.all else mission.target_channels)
 
-    candidates, sizes = collect_candidates(args.root, channels)
+    candidates = collect_candidates(args.root, channels)
     subsystems = subsystem_map()
     selected, per_channel_threshold, per_subsystem = select_balanced(candidates, subsystems)
 
@@ -116,7 +114,6 @@ def main(argv: list[str] | None = None) -> int:
         "per_channel_threshold": {ch: round(z, 3) for ch, z in sorted(per_channel_threshold.items())},
         "per_feature": frame["feature"].value_counts().to_dict() if len(frame) else {},
         "label_hit_rate": float(frame["label"].mean()) if len(frame) else None,
-        "channel_sizes": sizes,
     }
     (OUT_DIR / "ool_meta.json").write_text(json.dumps(meta, indent=2))
     logger.info(

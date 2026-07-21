@@ -1,9 +1,8 @@
-"""Timeseries labelling — Part 2 of the project.
+"""Part 2 — timeseries labelling.
 
-Given points of interest on a channel, `TimeSeriesDescriptor` (descriptor.py) asks
-ChatTS to describe the signal at three nested granularities (coarse → medium → fine),
-chaining each answer into the next prompt, and saves (start, end, description, label).
-The points come from `ool.py`: rule-based out-of-limits detection on rolling
-median / variance / frequency features over the ESA training telemetry
-(run with `python -m src.labelling.run_ool`, then `python -m src.labelling.run_descriptor`).
+Rule-based OOL detection over the ESA training telemetry (`ool.py`, run with
+`python -m src.labelling.run_ool`), then a Groq vision LM describes each detected
+point at three independent granularities from rendered plots (`descriptor.py` +
+`vlm.py` + `plots.py`, run with `python -m src.labelling.run_descriptor`).
+Sibling part: `src.agentic` (the interpretation loop).
 """

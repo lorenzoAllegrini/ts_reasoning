@@ -6,8 +6,9 @@
 # ─────────────────────────────────────────────────────────────────────────────
 /*
 
-# …re-include the code and the run essentials:
+# …re-include the code, the run essentials, and the experiment reports:
 !/src/
+!/reports/
 !/pyproject.toml
 !/uv.lock
 !/.python-version

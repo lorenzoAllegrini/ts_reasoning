@@ -108,15 +108,14 @@ OUT_OF_LIMITS_SIGMA: float = 3.0
 # granularities (half-widths in SAMPLES around the point; ESA Mission-1 is
 # resampled at 30 s, so 512 ≈ 4h16m, 128 ≈ 64 min, 24 ≈ 12 min).
 # ─────────────────────────────────────────────────────────────────────────────
-LABEL_COARSE_HALF: int = 512  # 1024-pt window = exactly the top of ChatTS's training range
+LABEL_COARSE_HALF: int = 512
 LABEL_MEDIUM_HALF: int = 128
 LABEL_FINE_HALF: int = 24
-LABEL_MAX_NEW_TOKENS: int = 400  # detailed but bounded — 768 gave ChatTS room to ramble/hallucinate
-# The description is MULTIVARIATE over channels of the SAME subsystem only. ChatTS handles
-# few channels well and degrades badly on many, so only the FEW MOST ACTIVE channels are
-# shown: the primary + up to LABEL_MAX_SERIES-1 siblings with the largest std in the coarse
-# window. Candidates are drawn from a same-subsystem POOL (Group first, then numeric
-# proximity) capped at LABEL_POOL_SIZE to bound how many channels are loaded per point.
+# The description is MULTIVARIATE over channels of the SAME subsystem only. Vision models
+# degrade on many panels, so only the FEW MOST ACTIVE channels are shown: the primary +
+# up to LABEL_MAX_SERIES-1 siblings with the largest std in the coarse window. Candidates
+# come from a same-subsystem POOL (Group first, then numeric proximity) capped at
+# LABEL_POOL_SIZE to bound how many full channels are loaded per point.
 LABEL_MAX_SERIES: int = 6
 LABEL_POOL_SIZE: int = 15
 

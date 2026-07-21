@@ -10,6 +10,7 @@ title).
 
 from __future__ import annotations
 
+import io
 import logging
 import math
 from pathlib import Path
@@ -32,8 +33,6 @@ def render_batch_png(named_segs: list[tuple[str, np.ndarray]]) -> bytes:
     Unlike the human-review images, this rendering is NEUTRAL: no centre line, no
     highlighted channel (the model must notice salient behaviour on its own, same
     constraint as the prompts). X axis = local sample index of the window."""
-    import io  # noqa: PLC0415
-
     if not 1 <= len(named_segs) <= 4:
         raise ValueError(f"a VLM batch renders 1–4 panels, got {len(named_segs)}")
     fig, axes = plt.subplots(len(named_segs), 1, figsize=(8.0, 2.1 * len(named_segs)), squeeze=False)
